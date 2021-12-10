@@ -1,13 +1,15 @@
 import './App.css';
 
-function List() {
+function List({ tasks }) {
   return (
     <div className="List">
       <h1>TO - Do</h1>
       <ul>
-        <li>
-          아무 일도 하기 싫다.
-        </li>
+          {tasks.map((task) => 
+              <li key={task.id}>
+                  {task.title}
+              </li>
+          )}
       </ul>
     </div>
   );
