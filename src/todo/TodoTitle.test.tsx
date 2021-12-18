@@ -1,15 +1,9 @@
 import TodoTitle from './TodoTitle'
-import { render } from '@testing-library/react';
-
+import { shallow } from 'enzyme';
 
 describe('TodoTitle', () => {
-    it('renders tasks', () => {
-    
-        const { container } = render((
-            <TodoTitle />
-          
-        ));
-    
-        expect(container).toHaveTextContent('To');
+    it('renders props title exactly', () => {
+        const wrapper = shallow(<TodoTitle title="todo title" />).props()
+        expect(wrapper.children).toEqual("todo title");
       })
 })
