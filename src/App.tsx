@@ -1,11 +1,14 @@
+import React, { ReactElement } from 'react';
+import Header from './header/Header';
+import Sections from './sections/Sections';
 
-function App() {
-
+const App = function App(): ReactElement {
   return (
     <div className="App">
-      <h1>TO - Do</h1>
+      <Header />
+      <Sections />
     </div>
   );
-}
+};
 
 export default App;
