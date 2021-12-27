@@ -4,39 +4,62 @@ import { Link } from 'react-scroll';
 
 const StyledLi = styled.li`
   display: inline-block;
-  &.active {
-    color: red;
-  }
+  color: ${(props) => props.color};
 `;
 
 StyledLi.displayName = 'li';
 
-const StyledNavUl = styled.ul``;
+const StyledNavUl = styled.ul`
+  display: flex;
+`;
 
-const Navigation = function Navigation() {
-  const [tab, setTab] = useState('main');
+type NavigationProps = {
+  defaultTab: string;
+};
 
-  const changeTab = () => {
-    setTab('메인');
+const Navigation = function Navigation({ defaultTab }: NavigationProps) {
+  const [selectedTab, setSelectedTab] = useState(defaultTab);
+
+  const changeTab = (which: string) => {
+    setSelectedTab(which);
   };
 
   return (
     <nav>
-      <ul>
-        <StyledLi onClick={changeTab}>
-          <Link onClick={changeTab} to="home" smooth activeClass="active">
+      <StyledNavUl>
+        <StyledLi color={selectedTab === 'main' ? 'purple' : 'white'}>
+          <Link
+            onClick={() => {
+              changeTab('main');
+            }}
+            to="home"
+            smooth
+          >
             메인
           </Link>
         </StyledLi>
-        <StyledLi>
-          <Link to="work" smooth activeClass="active">
+        <StyledLi color={selectedTab === 'work' ? 'purple' : 'white'}>
+          <Link
+            onClick={() => {
+              changeTab('work');
+            }}
+            to="work"
+            smooth
+          >
             포트폴리오
           </Link>
         </StyledLi>
-        <StyledLi>
-          <Link to="profile">메인</Link>
+        <StyledLi color={selectedTab === 'project' ? 'purple' : 'white'}>
+          <Link
+            onClick={() => {
+              changeTab('project');
+            }}
+            to="project"
+          >
+            프로젝트
+          </Link>
         </StyledLi>
-      </ul>
+      </StyledNavUl>
     </nav>
   );
 };
