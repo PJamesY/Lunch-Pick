@@ -11,13 +11,23 @@ StyledLi.displayName = 'li';
 
 const StyledNavUl = styled.ul`
   display: flex;
+  justify-content: space-between;
+`;
+
+const StyledHorizontalLine = styled.div`
+  position: absolute;
+  width: 100%;
+  background-color: purple;
+  height: 4px;
+  top: 50px;
 `;
 
 type NavigationProps = {
   defaultTab: string;
+  menus: { key: string; to: string; name: string }[];
 };
 
-const Navigation = function Navigation({ defaultTab }: NavigationProps) {
+const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
   const [selectedTab, setSelectedTab] = useState(defaultTab);
 
   const changeTab = (which: string) => {
@@ -27,38 +37,21 @@ const Navigation = function Navigation({ defaultTab }: NavigationProps) {
   return (
     <nav>
       <StyledNavUl>
-        <StyledLi color={selectedTab === 'main' ? 'purple' : 'white'}>
-          <Link
-            onClick={() => {
-              changeTab('main');
-            }}
-            to="home"
-            smooth
-          >
-            메인
-          </Link>
-        </StyledLi>
-        <StyledLi color={selectedTab === 'work' ? 'purple' : 'white'}>
-          <Link
-            onClick={() => {
-              changeTab('work');
-            }}
-            to="work"
-            smooth
-          >
-            포트폴리오
-          </Link>
-        </StyledLi>
-        <StyledLi color={selectedTab === 'project' ? 'purple' : 'white'}>
-          <Link
-            onClick={() => {
-              changeTab('project');
-            }}
-            to="project"
-          >
-            프로젝트
-          </Link>
-        </StyledLi>
+        <StyledHorizontalLine />
+        {menus.map((menu) => (
+          <StyledLi key={menu.key} color={selectedTab === menu.key ? 'purple' : 'white'}>
+            <Link
+              to={menu.to}
+              smooth
+              offset={-20}
+              onClick={() => {
+                changeTab(menu.key);
+              }}
+            >
+              {menu.name}
+            </Link>
+          </StyledLi>
+        ))}
       </StyledNavUl>
     </nav>
   );
