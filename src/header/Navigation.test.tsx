@@ -5,7 +5,16 @@ import Navigation from './Navigation';
 let wrapper: ShallowWrapper;
 
 beforeEach(() => {
-  wrapper = shallow(<Navigation defaultTab="" />);
+  wrapper = shallow(
+    <Navigation
+      defaultTab=""
+      menus={[
+        { key: 'home', to: 'home', name: '메인' },
+        { key: 'work', to: 'work', name: '포트폴리오' },
+        { key: 'project', to: 'project', name: '프로젝트' },
+      ]}
+    />,
+  );
 });
 
 describe('Navigation', () => {
