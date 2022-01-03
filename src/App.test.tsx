@@ -10,14 +10,9 @@ describe('App', () => {
   //     { id: 2, title: 'TDD 연습'},
   //   ],
   // }));
-  
-  it('renders tasks', () => {
-    
-    const { container } = render((
-<App />
-      
-    ));
 
-    expect(container).toHaveTextContent('TO');
-  })
-})
+  it('renders tasks', () => {
+    // const { container } = render(<App />);
+    // expect(container).toHaveTextContent('TO');
+  });
+});
