@@ -29,7 +29,7 @@ const Header = function Header() {
   return (
     <StyledHeader>
       <StyledheaderLogo>JAMES</StyledheaderLogo>
-      <Navigation defaultTab="" menus={menus} />
+      <Navigation defaultTab="home" menus={menus} />
     </StyledHeader>
   );
 };
