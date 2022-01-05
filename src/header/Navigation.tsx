@@ -22,6 +22,9 @@ const StyledLi = styled.li`
   a {
     display: block;
     padding: 0 20px;
+    text-decoration: none;
+    text-transfrom: uppercase;
+    font-weight: bold;
   }
 `;
 
