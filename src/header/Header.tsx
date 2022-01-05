@@ -2,18 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
-const StyledHeader = styled.header`
-  background: black;
-  color: white;
-  display: flex;
-  // padding: 32px;
-  justify-content: space-around;
-  align-items: center;
-  position: sticky;
-  padding-top: 32px;
-  padding-bottom: 32px;
-  top: -32px;
-`;
+const StyledHeader = styled.header``;
 
 const StyledheaderLogo = styled.h1`
   font-family: 'james';
