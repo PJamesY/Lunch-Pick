@@ -23,7 +23,7 @@ const StyledLi = styled.li`
     display: block;
     padding: 0 20px;
     text-decoration: none;
-    text-transfrom: uppercase;
+    text-transform: uppercase;
     font-weight: bold;
   }
 `;
