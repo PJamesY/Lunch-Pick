@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, ReactNode, useEffect, useState, useRef, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
+
+const StyledNav = styled.nav`
+  width: 100%;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+`;
 
 const StyledLi = styled.li`
   display: inline-block;
@@ -11,15 +17,6 @@ StyledLi.displayName = 'li';
 
 const StyledNavUl = styled.ul`
   display: flex;
-  justify-content: space-between;
-`;
-
-const StyledHorizontalLine = styled.div`
-  position: absolute;
-  width: 100%;
-  background-color: purple;
-  height: 4px;
-  top: 50px;
 `;
 
 type NavigationProps = {
@@ -29,17 +26,17 @@ type NavigationProps = {
 
 const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
   const [selectedTab, setSelectedTab] = useState(defaultTab);
+  const ref = useRef(null);
 
   const changeTab = (which: string) => {
     setSelectedTab(which);
   };
 
   return (
-    <nav>
+    <StyledNav>
       <StyledNavUl>
-        <StyledHorizontalLine />
         {menus.map((menu) => (
-          <StyledLi key={menu.key} color={selectedTab === menu.key ? 'purple' : 'white'}>
+          <StyledLi key={menu.key} color={menu.key === selectedTab ? 'purple' : 'white'}>
             <Link
               to={menu.to}
               smooth
@@ -47,13 +44,14 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
               onClick={() => {
                 changeTab(menu.key);
               }}
+              ref={ref}
             >
               {menu.name}
             </Link>
           </StyledLi>
         ))}
       </StyledNavUl>
-    </nav>
+    </StyledNav>
   );
 };
 
