@@ -13,11 +13,16 @@ const StyledNavUl = styled.ul`
   display: flex;
   margin: 0;
   padding: 0 20px;
+  float: right;
 `;
 
 const StyledLi = styled.li`
   display: inline-block;
   color: ${(props) => props.color};
+  a {
+    display: block;
+    padding: 0 20px;
+  }
 `;
 
 StyledLi.displayName = 'li';
