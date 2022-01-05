@@ -6,6 +6,7 @@ const StyledNav = styled.nav`
   width: 100%;
   height: 50px;
   background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
 const StyledLi = styled.li`
