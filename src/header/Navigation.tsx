@@ -9,16 +9,18 @@ const StyledNav = styled.nav`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 `;
 
+const StyledNavUl = styled.ul`
+  display: flex;
+  margin: 0;
+  padding: 0 20px;
+`;
+
 const StyledLi = styled.li`
   display: inline-block;
   color: ${(props) => props.color};
 `;
 
 StyledLi.displayName = 'li';
-
-const StyledNavUl = styled.ul`
-  display: flex;
-`;
 
 type NavigationProps = {
   defaultTab: string;
