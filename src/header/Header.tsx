@@ -2,10 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
-const StyledHeader = styled.header``;
+const StyledHeader = styled.header`
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+`;
 
 const StyledheaderLogo = styled.h1`
   font-family: 'james';
+  padding: 10px 10px;
 `;
 
 const menus = [
