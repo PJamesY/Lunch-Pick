@@ -7,6 +7,8 @@ const StyledNav = styled.nav`
   height: 50px;
   background: rgba(0, 0, 0, 0.8);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
 `;
 
 const StyledNavUl = styled.ul`
@@ -25,6 +27,7 @@ const StyledLi = styled.li`
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
+    line-height: 50px;
   }
 `;
 
@@ -51,7 +54,7 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
             <Link
               to={menu.to}
               smooth
-              offset={-20}
+              offset={-90}
               onClick={() => {
                 changeTab(menu.key);
               }}
