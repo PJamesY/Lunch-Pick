@@ -9,6 +9,9 @@ const StyledNav = styled.nav`
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   position: sticky;
   top: 0;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const StyledNavUl = styled.ul`
