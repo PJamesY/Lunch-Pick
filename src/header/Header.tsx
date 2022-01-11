@@ -9,10 +9,13 @@ const StyledHeader = styled.header`
   top: 0;
 `;
 
-const Title = styled.div`
+const StyledTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 500px) {
+    background: gray;
+  }
   span {
     margin-right: 10px;
     @media screen and (min-width: 500px) {
@@ -35,10 +38,10 @@ const menus = [
 const Header = function Header() {
   return (
     <StyledHeader>
-      <Title>
+      <StyledTitle>
         <StyledheaderLogo>JAMES</StyledheaderLogo>
         <MenuOutlined width={20} />
-      </Title>
+      </StyledTitle>
       <Navigation defaultTab="home" menus={menus} />
     </StyledHeader>
   );
