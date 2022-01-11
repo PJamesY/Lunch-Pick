@@ -1,4 +1,5 @@
 import React from 'react';
+import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
@@ -6,6 +7,18 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   position: sticky;
   top: 0;
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  span {
+    margin-right: 10px;
+    @media screen and (min-width: 500px) {
+      display: none;
+    }
+  }
 `;
 
 const StyledheaderLogo = styled.h1`
@@ -22,7 +35,10 @@ const menus = [
 const Header = function Header() {
   return (
     <StyledHeader>
-      <StyledheaderLogo>JAMES</StyledheaderLogo>
+      <Title>
+        <StyledheaderLogo>JAMES</StyledheaderLogo>
+        <MenuOutlined width={20} />
+      </Title>
       <Navigation defaultTab="home" menus={menus} />
     </StyledHeader>
   );
