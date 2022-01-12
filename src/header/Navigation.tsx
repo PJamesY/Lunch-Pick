@@ -19,6 +19,9 @@ const StyledNavUl = styled.ul`
   margin: 0;
   padding: 0 20px;
   float: right;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledLi = styled.li`
