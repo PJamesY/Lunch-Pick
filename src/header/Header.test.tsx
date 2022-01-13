@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
-import Header from './Header.tsx';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Header from './Header';
 
 let wrapper: ShallowWrapper;
 
@@ -10,6 +11,8 @@ beforeEach(() => {
 
 describe('Header', () => {
   it('should render properly', () => {
-    expect(wrapper.text().includes);
+    render(<Header />);
+    const menuButton = screen.getByRole('button');
+    fireEvent.click(menuButton);
   });
 });
