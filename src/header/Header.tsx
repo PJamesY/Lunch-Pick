@@ -24,11 +24,6 @@ const StyledTitle = styled.div`
   }
 `;
 
-const StyledheaderLogo = styled.h1`
-  font-family: 'james';
-  padding: 10px 10px;
-`;
-
 const menus = [
   { key: 'home', to: 'home', name: 'main' },
   { key: 'work', to: 'work', name: 'portfolio' },
@@ -46,8 +41,7 @@ const Header = function Header() {
   return (
     <StyledHeader>
       <StyledTitle>
-        <StyledheaderLogo>JAMES</StyledheaderLogo>
-        <div onClick={clicked} onKeyPress={clicked} role="button" tabIndex={0} className="james">
+        <div onClick={clicked} onKeyPress={clicked} role="button" tabIndex={0}>
           <MenuOutlined width={20} />
         </div>
         {show && <h1>jjjj</h1>}

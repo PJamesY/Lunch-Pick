@@ -37,6 +37,13 @@ const StyledLi = styled.li`
   }
 `;
 
+const StyledheaderLogo = styled.h1`
+  font-family: 'james';
+  position: absolute;
+  top: 16px;
+  left: 8%;
+`;
+
 StyledLi.displayName = 'li';
 
 type NavigationProps = {
@@ -54,6 +61,7 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
 
   return (
     <StyledNav>
+      <StyledheaderLogo>JAMES</StyledheaderLogo>
       <StyledNavUl>
         {menus.map((menu) => (
           <StyledLi key={menu.key} color={menu.key === selectedTab ? 'purple' : 'white'}>
