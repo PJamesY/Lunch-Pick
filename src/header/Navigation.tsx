@@ -28,13 +28,30 @@ const StyledNavUl = styled.ul`
 
 const StyledLi = styled.li`
   display: inline-block;
-  color: ${(props) => props.color};
+  line-height: 45px;
+  margin: 0 15px;
   a {
-    padding: 0 20px;
-    text-decoration: none;
+    position: relative;
     text-transform: uppercase;
     font-weight: bold;
-    line-height: 45px;
+    color: ${(props) => props.color};
+  }
+
+  a:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: ${(props) => props.color};
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s linear;
+  }
+  a:hover:before {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `;
 
@@ -58,7 +75,7 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
       <StyledheaderLogo>JAMES</StyledheaderLogo>
       <StyledNavUl>
         {menus.map((menu) => (
-          <StyledLi key={menu.key} color={menu.key === selectedTab ? 'purple' : 'white'}>
+          <StyledLi key={menu.key} color={menu.key === selectedTab ? 'red' : 'white'}>
             <Link
               to={menu.to}
               smooth
