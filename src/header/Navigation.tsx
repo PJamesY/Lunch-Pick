@@ -1,6 +1,7 @@
 import React, { MouseEvent, ReactNode, useEffect, useState, useRef, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -9,7 +10,14 @@ const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   @media screen and (max-width: 500px) {
-    display: none;
+    span {
+      color: white;
+      font-size: 25px;
+      float: right;
+      margin-top: 10px;
+      margin-right: 30px;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -24,6 +32,15 @@ const StyledheaderLogo = styled.h1`
 const StyledNavUl = styled.ul`
   margin-right: 10px;
   float: right;
+  @media screen and (max-width: 500px) {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #34495e;
+    top: 50px;
+    left: 0;
+    text-align: center;
+  }
 `;
 
 const StyledLi = styled.li`
@@ -63,6 +80,7 @@ type NavigationProps = {
 };
 
 const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
+  const [show, setShow] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
   const ref = useRef(null);
 
@@ -70,8 +88,15 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
     setSelectedTab(which);
   };
 
+  const clicked = () => {
+    console.log(12312312);
+    setShow(!show);
+  };
+
   return (
     <StyledNav>
+      <MenuOutlined />
+      <CloseOutlined width={20} />
       <StyledheaderLogo>JAMES</StyledheaderLogo>
       <StyledNavUl>
         {menus.map((menu) => (
