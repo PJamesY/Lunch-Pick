@@ -30,12 +30,11 @@ const StyledLi = styled.li`
   display: inline-block;
   color: ${(props) => props.color};
   a {
-    display: block;
     padding: 0 20px;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 45px;
   }
 `;
 
@@ -63,7 +62,7 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
             <Link
               to={menu.to}
               smooth
-              offset={-90}
+              offset={-50}
               onClick={() => {
                 changeTab(menu.key);
               }}
