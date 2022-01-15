@@ -6,7 +6,6 @@ const StyledNav = styled.nav`
   width: 100%;
   height: 50px;
   background: rgba(0, 0, 0, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
   position: sticky;
   top: 0;
   @media screen and (max-width: 500px) {
@@ -14,14 +13,17 @@ const StyledNav = styled.nav`
   }
 `;
 
+const StyledheaderLogo = styled.h1`
+  position: absolute;
+  top: 16px;
+  left: 8%;
+  font-family: 'james';
+  color: white;
+`;
+
 const StyledNavUl = styled.ul`
-  display: flex;
-  margin: 0;
-  padding: 0 20px;
+  margin-right: 10px;
   float: right;
-  @media screen and (max-width: 500px) {
-    flex-direction: column;
-  }
 `;
 
 const StyledLi = styled.li`
@@ -35,13 +37,6 @@ const StyledLi = styled.li`
     font-weight: bold;
     line-height: 50px;
   }
-`;
-
-const StyledheaderLogo = styled.h1`
-  font-family: 'james';
-  position: absolute;
-  top: 16px;
-  left: 8%;
 `;
 
 StyledLi.displayName = 'li';
