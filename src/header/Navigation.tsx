@@ -70,6 +70,16 @@ const StyledLi = styled.li`
     transform: scaleX(1);
     transform-origin: left;
   }
+
+  @media screen and (max-width: 500px) {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+
+    a {
+      font-size: 20px;
+    }
+  }
 `;
 
 StyledLi.displayName = 'li';
