@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-scroll';
 import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 
-interface Cnt {
-  cen?: string;
-}
-
 const StyledNav = styled.nav`
   width: 100%;
   height: 50px;
@@ -28,10 +24,6 @@ const StyledNav = styled.nav`
       margin-right: 30px;
       cursor: pointer;
     }
-    #check:checked ~ span {
-      // left: 0;f
-      color: red;
-    }
   }
 `;
 
@@ -43,7 +35,7 @@ const StyledheaderLogo = styled.h1`
   color: white;
 `;
 
-const StyledNavUl = styled.ul<{ show: string }>`
+const StyledNavUl = styled.ul<{ mobileShow: boolean }>`
   margin-right: 10px;
   float: right;
   @media screen and (max-width: 500px) {
@@ -52,7 +44,7 @@ const StyledNavUl = styled.ul<{ show: string }>`
     height: 100vh;
     background: #34495e;
     top: 50px;
-    left: ${(props) => props.show};
+    left: ${(props) => (props.mobileShow ? '0' : '-100%')};
     text-align: center;
     transition: all 0.5s;
   }
@@ -105,7 +97,8 @@ type NavigationProps = {
 };
 
 const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
-  const [show, setShow] = useState('0');
+  // const [show, setShow] = useState('0');
+  const [show, setShow] = useState(false);
   const [selectedTab, setSelectedTab] = useState(defaultTab);
   const ref = useRef(null);
 
@@ -113,23 +106,13 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
     setSelectedTab(which);
   };
 
-  const clicked = (showing: boolean) => {
-    if (showing) {
-      setShow('0');
-    } else {
-      setShow('-100%');
-    }
-
-    console.log(12312312, show);
-  };
-
   return (
     <StyledNav>
-      <MenuOutlined onClick={() => clicked(true)} />
-      <CloseOutlined onClick={() => clicked(false)} />
+      {!show && <MenuOutlined onClick={() => setShow(true)} />}
+      {show && <CloseOutlined onClick={() => setShow(false)} />}
 
       <StyledheaderLogo>JAMES</StyledheaderLogo>
-      <StyledNavUl show={show}>
+      <StyledNavUl mobileShow={show}>
         {menus.map((menu) => (
           <StyledLi key={menu.key} color={menu.key === selectedTab ? 'red' : 'white'}>
             <Link
