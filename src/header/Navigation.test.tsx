@@ -16,6 +16,17 @@ beforeEach(() => {
       ]}
     />,
   );
+
+  render(
+    <Navigation
+      defaultTab=""
+      menus={[
+        { key: 'home', to: 'home', name: '메인' },
+        { key: 'work', to: 'work', name: '포트폴리오' },
+        { key: 'project', to: 'project', name: '프로젝트' },
+      ]}
+    />,
+  );
 });
 
 describe('Navigation', () => {
@@ -44,20 +55,13 @@ describe('Navigation', () => {
   });
 
   describe('click menu button', () => {
-    it('should show close button when click menu button', () => {
-      render(
-        <Navigation
-          defaultTab=""
-          menus={[
-            { key: 'home', to: 'home', name: '메인' },
-            { key: 'work', to: 'work', name: '포트폴리오' },
-            { key: 'project', to: 'project', name: '프로젝트' },
-          ]}
-        />,
-      );
-      const dialogContainer = screen.getByLabelText('menu');
-      fireEvent.click(dialogContainer);
+    it('should show close button when click menu button and show menu button when click close button', () => {
+      const menuBtn = screen.getByLabelText('menu');
+      fireEvent.click(menuBtn);
       expect(screen.getByLabelText('close')).toBeInTheDocument();
+      const closeBtn = screen.getByLabelText('close');
+      fireEvent.click(closeBtn);
+      expect(screen.getByLabelText('menu')).toBeInTheDocument();
     });
   });
 });
