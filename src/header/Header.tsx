@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MenuOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 import Navigation from './Navigation';
 
@@ -31,21 +30,8 @@ const menus = [
 ];
 
 const Header = function Header() {
-  const [show, setShow] = useState(false);
-
-  const clicked = () => {
-    console.log(12312312);
-    setShow(!show);
-  };
-
   return (
     <StyledHeader>
-      <StyledTitle>
-        <div onClick={clicked} onKeyPress={clicked} role="button" tabIndex={0}>
-          <MenuOutlined width={20} />
-        </div>
-        {show && <h1>jjjj</h1>}
-      </StyledTitle>
       <Navigation defaultTab="home" menus={menus} />
     </StyledHeader>
   );
