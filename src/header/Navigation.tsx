@@ -104,6 +104,9 @@ const Navigation = function Navigation({ defaultTab, menus }: NavigationProps) {
 
   const changeTab = (which: string) => {
     setSelectedTab(which);
+    if (show) {
+      setShow(!show);
+    }
   };
 
   return (
