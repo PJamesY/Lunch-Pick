@@ -8,21 +8,6 @@ const StyledHeader = styled.header`
   top: 0;
 `;
 
-const StyledTitle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @media screen and (max-width: 500px) {
-    background: gray;
-  }
-  span {
-    margin-right: 10px;
-    @media screen and (min-width: 500px) {
-      display: none;
-    }
-  }
-`;
-
 const menus = [
   { key: 'home', to: 'home', name: 'main' },
   { key: 'work', to: 'work', name: 'portfolio' },
