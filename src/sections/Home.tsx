@@ -11,7 +11,7 @@ const StyledImg = styled.img`
 const Home = function Home() {
   return (
     <StyledSection id="home">
-      <StyledImg src={hello} alt="loading..." />
+      <StyledImg src={hello} alt="background" />
     </StyledSection>
   );
 };
