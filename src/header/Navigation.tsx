@@ -6,9 +6,9 @@ import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
 const StyledNav = styled.nav`
   width: 100%;
   height: 50px;
-  background: rgba(0, 0, 0, 0.8);
   position: sticky;
   top: 0;
+  background: purple;
   @media screen and (min-width: 501px) {
     span {
       display: none;
