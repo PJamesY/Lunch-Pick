@@ -8,7 +8,7 @@ const StyledNav = styled.nav`
   height: 50px;
   position: sticky;
   top: 0;
-  background: purple;
+  background: #75559d;
   @media screen and (min-width: 501px) {
     span {
       display: none;
