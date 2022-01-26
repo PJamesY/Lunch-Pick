@@ -54,6 +54,7 @@ const StyledLi = styled.li`
   display: inline-block;
   line-height: 45px;
   margin: 0 15px;
+  cursor: pointer;
   a {
     position: relative;
     text-transform: uppercase;
