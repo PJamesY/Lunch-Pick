@@ -8,6 +8,7 @@ export const StyledBoard = styled.div`
   background-color: beige;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const StyledRow = styled.div`
@@ -15,20 +16,42 @@ export const StyledRow = styled.div`
   justify-content: space-between;
 `;
 
+const StyledCell = styled.div`
+  background-color: green;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+`;
+
 const Project = function Project() {
   return (
     <StyledSection id="project">
       <StyledBoard>
         <StyledRow>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
+          <StyledCell>1</StyledCell>
+          <StyledCell>2</StyledCell>
+          <StyledCell>3</StyledCell>
+          <StyledCell>4</StyledCell>
+          <StyledCell>5</StyledCell>
         </StyledRow>
         <StyledRow>
-          <div>1</div>
-          <div>2</div>
+          <StyledCell>1</StyledCell>
+          <StyledCell>2</StyledCell>
+        </StyledRow>
+        <StyledRow>
+          <StyledCell>1</StyledCell>
+          <StyledCell>2</StyledCell>
+        </StyledRow>
+        <StyledRow>
+          <StyledCell>1</StyledCell>
+          <StyledCell>2</StyledCell>
+        </StyledRow>
+        <StyledRow>
+          <StyledCell>1</StyledCell>
+          <StyledCell>2</StyledCell>
+          <StyledCell>3</StyledCell>
+          <StyledCell>4</StyledCell>
+          <StyledCell>5</StyledCell>
         </StyledRow>
       </StyledBoard>
     </StyledSection>
