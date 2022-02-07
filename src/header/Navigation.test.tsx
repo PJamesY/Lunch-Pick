@@ -63,5 +63,33 @@ describe('Navigation', () => {
       fireEvent.click(closeBtn);
       expect(screen.getByLabelText('menu')).toBeInTheDocument();
     });
+
+    it('should close menu when click link show menu button', () => {
+      // const mainMenu = screen.getByText('메인');
+      // console.log(mainMenu);
+      // fireEvent.click(mainMenu);
+      // expect(screen.getByLabelText('menu')).toBeInTheDocument();
+      // const { container } = render(
+      //   <Navigation
+      //     defaultTab=""
+      //     menus={[
+      //       { key: 'home', to: 'home', name: '메인' },
+      //       { key: 'work', to: 'work', name: '포트폴리오' },
+      //       { key: 'project', to: 'project', name: '프로젝트' },
+      //     ]}
+      //   />,
+      // );
+      const menuBtn = screen.getByLabelText('menu');
+      fireEvent.click(menuBtn);
+      expect(screen.getByText('메인')).not.toBeInTheDocument();
+      // const btn = container.querySelector('li');
+      // console.log(btn);
+      // wrapper.find('li').at(0).childAt(0).simulate('click');
+      // expect(screen.getByLabelText('menu')).toBeInTheDocument();
+      // wrapper.find('li').at(0).childAt(0).simulate('click');
+      // console.log('ul', wrapper.find('li').at(0));
+      // expect(wrapper.find('ul').props().color).toBe('white');
+      // expect(wrapper.find('li').at(0).childAt(0)).not.toBeInTheDocument();
+    });
   });
 });

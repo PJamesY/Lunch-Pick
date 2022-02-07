@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { StyledSection } from '../styledComponent/Section';
-import a from '../asset/a.jpeg';
 
 export const StyledBoard = styled.div`
   width: 100%;
@@ -53,7 +52,6 @@ const Wrapper = styled.div<{ leftx: number; topy: number; color: string }>`
   left: ${(props) => props.leftx}px;
   background-color: ${(props) => props.color};
   cursor: pointer;
-  // background-image: url(${a});
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,9 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import useScroll from './hooks/useScroll';
-
 import Header from './header/Header';
-
 import Sections from './sections/Sections';
 
 const StyledImg = styled.div<{ animate: number }>`
