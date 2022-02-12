@@ -1,5 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { Routes, Route } from 'react-router-dom';
+import Pokemon from './pages/Pokemon';
 import useScroll from './hooks/useScroll';
 import Header from './header/Header';
 import Sections from './sections/Sections';
@@ -21,9 +23,18 @@ const App = function App(): ReactElement {
 
   return (
     <div className="App">
-      <Header />
-      <StyledImg animate={scrollY} />
-      <Sections />
+      <Routes>
+        <Route path="/pokemon" element={<Pokemon />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <Sections />
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 };
