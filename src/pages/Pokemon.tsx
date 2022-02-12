@@ -4,7 +4,11 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 const queryClient = new QueryClient();
 
 const Pokemon = function Pokemon(): ReactElement {
-  return <div>pokemon</div>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div>pokemon</div>
+    </QueryClientProvider>
+  );
 };
 
 export default Pokemon;
