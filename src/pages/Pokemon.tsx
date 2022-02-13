@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 const queryClient = new QueryClient();
 
 const Example = function Example() {
+
   const { isLoading, error, data, isFetching } = useQuery('repoData', () =>
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=190').then((res) => res.json()),
   );
