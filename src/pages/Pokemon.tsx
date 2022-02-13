@@ -9,9 +9,9 @@ const Example = function Example() {
     fetch('https://api.github.com/repos/tannerlinsley/react-query').then((res) => res.json()),
   );
 
-  if (isLoading) return 'Loading...';
+  if (isLoading) return <div>Loading...</div>;
 
-  if (error) return 'error';
+  if (error) return <div>error</div>;
 
   return (
     <div>
@@ -28,7 +28,7 @@ const Example = function Example() {
 const Pokemon = function Pokemon(): ReactElement {
   return (
     <QueryClientProvider client={queryClient}>
-      <div>pokemon</div>
+      <Example />
     </QueryClientProvider>
   );
 };
