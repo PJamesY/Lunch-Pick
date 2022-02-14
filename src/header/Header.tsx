@@ -6,6 +6,7 @@ const StyledHeader = styled.header`
   box-sizing: border-box;
   position: sticky;
   top: 0;
+  z-index: 200;
 `;
 
 const menus = [
