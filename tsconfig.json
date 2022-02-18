@@ -18,13 +18,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "incremental": true
   },
   "include": [
     "src",
     "custom.d.ts"
-  ],
+, "pages/index.js"  ],
   "exclude": [
     "node_modules"
   ]

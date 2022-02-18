@@ -4,7 +4,6 @@ export const StyledSection = styled.section`
   width: 100%;
   height: 100vh;
   position: relative;
-  z-index: -200;
 `;
 
 export const StyledSectionTitle = styled.span`
