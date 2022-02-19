@@ -2,23 +2,44 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { BsFillTreeFill } from 'react-icons/bs';
 import { IconContext } from 'react-icons';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-// import {AiFillStar} from 'react-icons/ai'
+import { AiFillStar } from 'react-icons/ai';
 
-interface FlowerProps {
-  head: string;
-}
-
-interface TreeProps {
+interface ObjectProps {
   left: number;
   isDay: boolean;
 }
 
-const Flower = function Flower() {
-  return <div className="wrapper"></div>;
+const Flower = function Flower({ left, isDay }: ObjectProps) {
+  return (
+    <div className="wrapper">
+      <style jsx>{`
+        .wrapper {
+          position: absolute;
+          bottom: 0px;
+          left: ${left}%;
+        }
+        .tree {
+          position: relative;
+        }
+        .star {
+          position: absolute;
+          z-index: 299;
+        }
+
+        .star1 {
+          top: 10%;
+          left: 30%;
+        }
+        .star2 {
+          top: 35%;
+          left: 50%;
+        }
+      `}</style>
+    </div>
+  );
 };
 
-const Tree = function Tree({ left, isDay }: TreeProps) {
+const Tree = function Tree({ left, isDay }: ObjectProps) {
   return (
     <div className="wrapper">
       <div className="tree">
@@ -63,7 +84,11 @@ const Tree = function Tree({ left, isDay }: TreeProps) {
   );
 };
 
-const Paper = function Paper({ head }: FlowerProps) {
+interface PaperProps {
+  head: string;
+}
+
+const Paper = function Paper({ head }: PaperProps) {
   const [isDay, setIsDay] = useState(true);
 
   return (
