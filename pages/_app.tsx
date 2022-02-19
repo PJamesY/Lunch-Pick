@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
     <>
-      {router.pathname !== '/flower' && <NavBar />}
+      {router.pathname !== '/paper' && <NavBar />}
       <Component {...pageProps} />
     </>
   );
