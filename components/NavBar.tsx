@@ -5,18 +5,32 @@ const NavBar = function NavBar() {
     <>
       <div className="nav-bar">
         <span className="title">JAMES</span>
-        <AiOutlineUser />
+        <ul>
+          <li>
+            <AiOutlineUser />
+          </li>
+          <li>James</li>
+          <li>로그아웃</li>
+        </ul>
       </div>
       <style jsx>
         {`
           .nav-bar {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
+            align-items: center;
             width: 100%;
             background-color: #f76707;
           }
           .title {
             font-weight: bold;
+          }
+          ul {
+            display: flex;
+            align-items: center;
+          }
+          li {
+            list-style: none;
           }
         `}
       </style>
