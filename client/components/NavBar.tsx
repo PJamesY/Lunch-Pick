@@ -1,10 +1,15 @@
+import Link from 'next/link';
 import { AiOutlineUser } from 'react-icons/ai';
 
 const NavBar = function NavBar() {
   return (
     <>
       <div className="nav-bar">
-        <span className="title">JAMES</span>
+        <span className="title">
+          <Link href="/">
+            <a className="link">JAMES</a>
+          </Link>{' '}
+        </span>
         <ul>
           <li>
             <AiOutlineUser />
@@ -13,7 +18,7 @@ const NavBar = function NavBar() {
           <li>로그아웃</li>
         </ul>
       </div>
-      <style jsx>
+      <style>
         {`
           .nav-bar {
             display: flex;
@@ -31,6 +36,13 @@ const NavBar = function NavBar() {
           }
           li {
             list-style: none;
+          }
+          .link {
+            color: inherit;   
+            text-decoration: none;     
+          }
+          .link:hover {
+            text-decoration: none;
           }
         `}
       </style>
