@@ -1,38 +1,43 @@
-import React, { useEffect } from 'react';
-import useSwr from 'swr';
-import axios from 'axios';
+import React from 'react';
+import getRestAreaList from '../api/restAreaList';
 
-export interface foodProps {}
+export interface foodProps {
+  restAreaList: any;
+}
 
-// const fetcher = url => fetch()
+const food: React.FC<foodProps> = ({ restAreaList }) => {
+  console.log('data', restAreaList);
 
-const food: React.FC<foodProps> = ({ children }) => {
-  useEffect(() => {
-    const getUser = () => {
-      fetch('http://localhost:5000/api/food', {
-        method: 'GET',
-        // credentials: 'include',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          // 'Access-Control-Allow-Credentials': 'true',
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error('authentication has been failed');
-        })
-        .then((resObject) => {
-          // console.log(resObject.user.displayName);
-          // setUser(resObject.user.displayName);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
-  }, []);
-  return <div>food</div>;
+  return (
+    <ul>
+      {restAreaList.map((restArea) => (
+        <li key={restArea.svarCd}>{restArea.svarNm}</li>
+      ))}
+
+      <style jsx>
+        {`
+          ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          li {
+            height: 40px;
+          }
+        `}
+      </style>
+    </ul>
+  );
 };
+
+export async function getStaticProps() {
+  const restAreaList = await getRestAreaList();
+  return {
+    props: {
+      restAreaList: restAreaList,
+    },
+  };
+}
 
 export default food;
