@@ -1,8 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
-
-const PUBLIC_INFO_API_URL =
-  "http://apis.data.go.kr/1390802/AgriFood/FdFoodCkryImage/getKoreanFoodFdFoodCkryImageList";
+require("dotenv").config();
 
 const REST_AREA_LIST_URL =
   "http://data.ex.co.kr/openapi/restinfo/hiwaySvarInfoList";
@@ -13,11 +11,11 @@ const BEST_FOOD_API_URL =
 const getRestAreaList = async () => {
   try {
     response = await axios.get(
-      `${REST_AREA_LIST_URL}?${encodeURIComponent(
-        "key"
-      )}=1042472163&${encodeURIComponent("type")}=json`
+      `${REST_AREA_LIST_URL}?${encodeURIComponent("key")}=${
+        process.env.REST_AREA_LIST_API_KEY
+      }&${encodeURIComponent("type")}=json`
     );
-    return response;
+    return response.data;
   } catch (e) {
     // error
   }
@@ -26,9 +24,9 @@ const getRestAreaList = async () => {
 const getAreaRestFood = async () => {
   try {
     response = await axios.get(
-      `${BEST_FOOD_API_URL}?${encodeURIComponent(
-        "key"
-      )}=1042472163&${encodeURIComponent("type")}=json&${encodeURIComponent(
+      `${BEST_FOOD_API_URL}?${encodeURIComponent("key")}=${
+        process.env.REST_AREA_RECOMMEND_FOOD_KEY
+      }&${encodeURIComponent("type")}=json&${encodeURIComponent(
         "numOfRows"
       )}=20&${encodeURIComponent("stdRestCd")}=000001`
     );
@@ -49,7 +47,9 @@ router.get("/food", (req, res) => {
 
 router.get("/restAreaList", (req, res) => {
   getRestAreaList().then((response) => {
-    res.send({ error: false, data: response.data });
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    console.log("asdfasdfasdfsdfas", response.list);
+    res.send({ data: response.list });
   });
 });
 
