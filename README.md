@@ -4,11 +4,16 @@
 
 
 <div>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
-<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=typescript&logoColor=white">
+   <h2>Front-end</h2>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+  
+
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=typescript&logoColor=white">
     <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=typescript&logoColor=white">
       <img src="https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=typescript&logoColor=white">
+  <h2>Back-end</h2>
+    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=typescript&logoColor=white">  
+ 
 </div>
 
 
