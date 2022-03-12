@@ -1,38 +1,20 @@
 import axios from 'axios';
+import { IRestAreaList } from '../types/restArea';
 
 async function getRestAreaList() {
-  const data = await axios.get('http://localhost:5000/api/restAreaList');
+  const restAreaList = await axios.get('http://localhost:5000/api/restAreaList');
 
-  const filteredData = data.data.data.map((elem) => ({
-    routeCd: elem.routeCd,
-    routeNm: elem.routeNm,
-    svarNm: elem.svarNm,
-    svarCd: elem.svarCd,
+  const restAreaListWithoutGasStation = restAreaList.data.data.filter((elem) => elem.svarNm.slice(-3) === '휴게소');
+
+  const filteredData: IRestAreaList = restAreaListWithoutGasStation.map((elem) => ({
+    routeCode: elem.routeCd,
+    routeName: elem.routeNm,
+    restAreaName: elem.svarNm,
+    restAreaCode: elem.svarCd,
+    directionCode: elem.gudClssCd,
   }));
 
   return filteredData;
-  // let responsee;
-  // fetch('http://localhost:5000/api/restAreaList', {
-  //   method: 'GET',
-  //   headers: {
-  //     Accept: 'application/json',
-  //     'Content-Type': 'application/json',
-  //   },
-  // })
-  //   .then((res) => {
-  //     // console.log('sd', res);
-  //     responsee = res.json();
-  //     // return res.json();
-  //     //   return res;
-  //     // if (res.status === 200) return res.json();
-  //     // throw new Error('rest area list error');
-  //   })
-  //   .catch((err) => {
-  //     console.log('asdfadsfasdf');
-  //     console.dir(err);
-  //   });
-
-  // return responsee;
 }
 
 export default getRestAreaList;

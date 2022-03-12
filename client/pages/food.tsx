@@ -1,17 +1,16 @@
 import React from 'react';
 import getRestAreaList from '../api/restAreaList';
+import { IRestAreaList } from '../types/restArea';
 
 export interface foodProps {
-  restAreaList: any;
+  restAreaList: IRestAreaList[];
 }
 
 const food: React.FC<foodProps> = ({ restAreaList }) => {
-  console.log('data', restAreaList);
-
   return (
     <ul>
       {restAreaList.map((restArea) => (
-        <li key={restArea.svarCd}>{restArea.svarNm}</li>
+        <li key={restArea.restAreaCode}>{restArea.restAreaName}</li>
       ))}
 
       <style jsx>
