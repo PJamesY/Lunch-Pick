@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import getRestArea from '../../api/restArea';
 import getRestAreaFood from '../../api/restAreaFood';
 import FoodCard from '../../components/fodCard';
+import useSWR from 'swr';
+import axios from 'axios';
 
 export interface FoodProps {
   restAreaName: string;
@@ -9,12 +11,41 @@ export interface FoodProps {
 }
 
 const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
+  const [datas, setData] = useState(foodList);
+  const [sortPrice, setSortPrice] = useState(0);
+
+  useEffect(() => {
+    setData(foodList);
+    console.log(datas);
+  }, [foodList]);
+
+  useEffect(() => {
+    if (sortPrice === -1) {
+      const sortedData = [...datas];
+      sortedData.sort(function (a, b) {
+        return Number(a.price) - Number(b.price);
+      });
+      setData(sortedData);
+    }
+  }, [sortPrice]);
+
   return (
     <>
       <h2>{restAreaName}</h2>
+      <div className="price">
+        <span>가격</span>
+        <button
+          onClick={() => {
+            setSortPrice(-1);
+          }}
+        >
+          내림차순
+        </button>
+        <button>오름차순</button>
+      </div>
 
       <ul className="food-list">
-        {foodList?.map((food) => (
+        {datas?.map((food) => (
           <FoodCard
             key={food.foodName}
             foodName={food.foodName}
@@ -36,8 +67,11 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
             width: 100%;
             top: 0;
           }
-          .food-list {
+          .price {
             margin-top: 50px;
+          }
+          .food-list {
+            margin-top: 20px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             row-gap: 1ch;
