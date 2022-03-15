@@ -5,6 +5,12 @@ import FoodCard from '../../components/fodCard';
 import useSWR from 'swr';
 import axios from 'axios';
 
+enum Sort {
+  Default,
+  Descending,
+  Ascending,
+}
+
 export interface FoodProps {
   restAreaName: string;
   foodList: any[];
@@ -12,36 +18,46 @@ export interface FoodProps {
 
 const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
   const [datas, setData] = useState(foodList);
-  const [sortPrice, setSortPrice] = useState(0);
 
-  useEffect(() => {
-    setData(foodList);
-    console.log(datas);
-  }, [foodList]);
+  const sorting = (order) => {
+    const sortedData = [...datas];
 
-  useEffect(() => {
-    if (sortPrice === -1) {
-      const sortedData = [...datas];
+    if (order === Sort.Descending) {
       sortedData.sort(function (a, b) {
         return Number(a.price) - Number(b.price);
       });
-      setData(sortedData);
+    } else if (order === Sort.Ascending) {
+      sortedData.sort(function (a, b) {
+        return Number(b.price) - Number(a.price);
+      });
     }
-  }, [sortPrice]);
+
+    setData(sortedData);
+  };
+
+  useEffect(() => {
+    setData(foodList);
+  }, [foodList]);
 
   return (
     <>
       <h2>{restAreaName}</h2>
-      <div className="price">
+      <div className="price-sorting">
         <span>가격</span>
         <button
           onClick={() => {
-            setSortPrice(-1);
+            sorting(Sort.Descending);
           }}
         >
           내림차순
         </button>
-        <button>오름차순</button>
+        <button
+          onClick={() => {
+            sorting(Sort.Ascending);
+          }}
+        >
+          오름차순
+        </button>
       </div>
 
       <ul className="food-list">
@@ -67,7 +83,7 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
             width: 100%;
             top: 0;
           }
-          .price {
+          .price-sorting {
             margin-top: 50px;
           }
           .food-list {
