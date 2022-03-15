@@ -11,6 +11,12 @@ enum Sort {
   Ascending,
 }
 
+enum Filter {
+  Recommend,
+  Best,
+  Premium,
+}
+
 export interface FoodProps {
   restAreaName: string;
   foodList: any[];
@@ -18,6 +24,9 @@ export interface FoodProps {
 
 const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
   const [datas, setData] = useState(foodList);
+  const [recommend, setRecommend] = useState(false);
+  const [best, setBest] = useState(false);
+  const [premium, setPremium] = useState(false);
 
   const sorting = (order) => {
     const sortedData = [...datas];
@@ -33,6 +42,14 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
     }
 
     setData(sortedData);
+  };
+
+  const filtering = (option) => {
+    if (option === Filter.Recommend) {
+      setRecommend(!recommend);
+    } else if (option === Filter.Best) {
+      setBest(!best);
+    }
   };
 
   useEffect(() => {
@@ -58,6 +75,18 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
         >
           오름차순
         </button>
+      </div>
+      <div className="filter-buttons">
+        <button
+          className={`filter-button recommend ${recommend ? 'active' : ''}`}
+          onClick={() => {
+            filtering(Filter.Recommend);
+          }}
+        >
+          추천
+        </button>
+        <button className="filter-button best">베스트</button>
+        <button className="filter-button premium">프리미엄</button>
       </div>
 
       <ul className="food-list">
@@ -92,6 +121,18 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
             grid-template-columns: repeat(2, 1fr);
             row-gap: 1ch;
             column-gap: 1ch;
+          }
+          .filter-buttons {
+            display: flex;
+            justify-content: flex-end;
+          }
+          .filter-button {
+            padding: 0;
+            border: none;
+            margin-left: 10px;
+          }
+          .filter-button.recommend.active {
+            background-color: red;
           }
         `}
       </style>
