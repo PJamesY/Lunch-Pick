@@ -47,9 +47,37 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
   const filtering = (option) => {
     if (option === Filter.Recommend) {
       setRecommend(!recommend);
-      console.log(foodList);
+
+      if (recommend) {
+        setData(foodList);
+      } else {
+        setBest(false);
+        setPremium(false);
+        const filterdData = foodList.filter((elem) => elem.isRecommend === 'Y');
+        setData(filterdData);
+      }
     } else if (option === Filter.Best) {
       setBest(!best);
+
+      if (best) {
+        setData(foodList);
+      } else {
+        setRecommend(false);
+        setPremium(false);
+        const filterdData = foodList.filter((elem) => elem.isBest === 'Y');
+        setData(filterdData);
+      }
+    } else {
+      setPremium(!premium);
+
+      if (premium) {
+        setData(foodList);
+      } else {
+        setRecommend(false);
+        setBest(false);
+        const filterdData = foodList.filter((elem) => elem.isPremium === 'Y');
+        setData(filterdData);
+      }
     }
   };
 
@@ -86,8 +114,22 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
         >
           추천
         </button>
-        <button className="filter-button best">베스트</button>
-        <button className="filter-button premium">프리미엄</button>
+        <button
+          className={`filter-button best ${best ? 'active' : ''}`}
+          onClick={() => {
+            filtering(Filter.Best);
+          }}
+        >
+          베스트
+        </button>
+        <button
+          className={`filter-button premium ${premium ? 'active' : ''}`}
+          onClick={() => {
+            filtering(Filter.Premium);
+          }}
+        >
+          프리미엄
+        </button>
       </div>
 
       <ul className="food-list">
@@ -134,6 +176,12 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
           }
           .filter-button.recommend.active {
             background-color: red;
+          }
+          .filter-button.best.active {
+            background-color: green;
+          }
+          .filter-button.premium.active {
+            background-color: orange;
           }
         `}
       </style>
