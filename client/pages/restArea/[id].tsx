@@ -47,6 +47,7 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
   const filtering = (option) => {
     if (option === Filter.Recommend) {
       setRecommend(!recommend);
+      console.log(foodList);
     } else if (option === Filter.Best) {
       setBest(!best);
     }

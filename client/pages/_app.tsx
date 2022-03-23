@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
     <>
-      <NavBar />
+      {router.pathname !== '/restArea/[id]' && <NavBar />}
       <Component {...pageProps} />
     </>
   );

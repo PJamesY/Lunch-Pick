@@ -5,12 +5,13 @@ export interface LoginButtonProps {
   backgroundColor: string;
   imgSrc: string;
   text: string;
+  onClick: any;
 }
 
-const LoginButton: React.FC<LoginButtonProps> = ({ children, backgroundColor, imgSrc, text }) => {
+const LoginButton: React.FC<LoginButtonProps> = ({ backgroundColor, imgSrc, text, onClick }) => {
   return (
     <>
-      <div className="loginButton">
+      <div className="loginButton" onClick={onClick}>
         <Image src={imgSrc} width="20" height="20" />
         <span>{text}</span>
       </div>

@@ -14,15 +14,25 @@ const Login = function Login() {
   //   }
   // }, []);
 
+  const google = () => {
+    window.open('http://localhost:5000/auth/google', '_self');
+  };
+
+  const facebook = () => {
+    // console.log('facev')
+  };
+
+  const github = () => {};
+
   return (
     <>
       <div className="login">
         <h1 className="loginTitle">Choose login</h1>
         <div className="wrapper">
           <div className="left">
-            <LoginButton backgroundColor="#df4930" imgSrc="/google.png" text="Google" />
-            <LoginButton backgroundColor="#507cc0" imgSrc="/facebook.png" text="Facebook" />
-            <LoginButton backgroundColor="black" imgSrc="/github.png" text="Github" />
+            <LoginButton backgroundColor="#df4930" imgSrc="/google.png" text="Google" onClick={google} />
+            <LoginButton backgroundColor="#507cc0" imgSrc="/facebook.png" text="Facebook" onClick={facebook} />
+            <LoginButton backgroundColor="black" imgSrc="/github.png" text="Github" onClick={github} />
           </div>
           <div className="center">
             <div className="line" />
