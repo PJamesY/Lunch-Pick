@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import KakaomapComponent from '../components/map/KakaomapComponent';
+import axios from 'axios';
 
 const Map: React.FC = () => {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
+  const [lon, setLon] = useState(0);
+  const [lat, setLat] = useState(0);
+  const [orderedList, setOrderedList] = useState();
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -10,8 +14,9 @@ const Map: React.FC = () => {
       navigator.geolocation.getCurrentPosition((position) => {
         const lon = position.coords.longitude; // 경도
         const lat = position.coords.latitude; // 위도
+        setLon(lon);
+        setLat(lat);
 
-        console.log('my', lon, lat);
         const coords = new (window as any).daum.maps.LatLng(lat, lon); // 지도의 중심좌표
         const options = {
           center: coords,
@@ -45,6 +50,28 @@ const Map: React.FC = () => {
       // displayMarker(locPosition, message);
     }
   }, []);
+
+  useEffect(() => {
+    async function getLoc() {
+      const result = await axios.get('http://localhost:5000/api/restAreaLoc');
+
+      console.log('james', result.data.data);
+
+      const dd = result.data.data.map((area) => ({
+        ...area,
+        dist: (lon - area.xValue) ** 2 + (lat - area.yValue) ** 2,
+      }));
+      const sorted = dd.sort(function (a, b) {
+        return a.dist - b.dist;
+      });
+      console.log('dd', sorted);
+    }
+    if (lon && lat) {
+      getLoc();
+      console.log('lon', lon, lat);
+      // if ()
+    }
+  }, [lon, lat]);
 
   return <KakaomapComponent ref={kakaoMap} />;
 };
