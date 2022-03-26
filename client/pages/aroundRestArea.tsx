@@ -73,7 +73,29 @@ const Map: React.FC = () => {
     }
   }, [lon, lat]);
 
-  return <KakaomapComponent ref={kakaoMap} />;
+  return (
+    <>
+      <KakaomapComponent ref={kakaoMap} />
+      <button>리스트</button>
+
+      <style jsx>
+        {`
+          button {
+            background-color: red;
+            border: 1px solid orange;
+            border-radius: 10px;
+            position: absolute;
+            color: white;
+            bottom: 20px;
+            z-index: 2;
+            left: 50%;
+            transform: translate(-50%);
+            padding: 3px;
+          }
+        `}
+      </style>
+    </>
+  );
 };
 
 export default Map;
