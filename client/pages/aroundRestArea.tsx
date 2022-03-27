@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import KakaomapComponent from '../components/map/KakaomapComponent';
 import axios from 'axios';
+import Link from 'next/link';
 
 const Map: React.FC = () => {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
@@ -76,11 +77,13 @@ const Map: React.FC = () => {
   return (
     <>
       <KakaomapComponent ref={kakaoMap} />
-      <button>리스트</button>
+      <Link href={{ pathname: '/aroundRestAreaList', query: { lat, lon } }}>
+        <a className="button">리스트</a>
+      </Link>
 
       <style jsx>
         {`
-          button {
+          .button {
             background-color: red;
             border: 1px solid orange;
             border-radius: 10px;
