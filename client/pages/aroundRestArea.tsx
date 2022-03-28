@@ -52,28 +52,6 @@ const Map: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    async function getLoc() {
-      const result = await axios.get('http://localhost:5000/api/restAreaLoc');
-
-      console.log('james', result.data.data);
-
-      const dd = result.data.data.map((area) => ({
-        ...area,
-        dist: (lon - area.xValue) ** 2 + (lat - area.yValue) ** 2,
-      }));
-      const sorted = dd.sort(function (a, b) {
-        return a.dist - b.dist;
-      });
-      console.log('dd', sorted);
-    }
-    if (lon && lat) {
-      getLoc();
-      console.log('lon', lon, lat);
-      // if ()
-    }
-  }, [lon, lat]);
-
   return (
     <>
       <KakaomapComponent ref={kakaoMap} />
