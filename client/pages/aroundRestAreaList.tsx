@@ -21,8 +21,9 @@ const AroundRestAreaList: React.FC<aroundRestAreaListProps> = ({ router: { query
       const sorted = dd.sort(function (a, b) {
         return a.dist - b.dist;
       });
-      console.log('dd', sorted);
-      setList(sorted);
+      const filterdSorted = sorted.filter((elem) => elem.unitName.slice(elem.unitName.length - 3) === '휴게소');
+
+      setList(filterdSorted);
     }
     if (query.lon && query.lat) {
       getLoc();
@@ -38,6 +39,15 @@ const AroundRestAreaList: React.FC<aroundRestAreaListProps> = ({ router: { query
           ))}
         </ul>
       )}
+
+      <style jsx>
+        {`
+          ul {
+            display: flex;
+            flex-direction: column;
+          }
+        `}
+      </style>
     </div>
   );
 };
