@@ -20,12 +20,13 @@
     "noEmit": true,
     "jsx": "preserve",
     "baseUrl": "./src",
-    "incremental": true
+    "incremental": true,
+    "noImplicitAny": true,
   },
   "include": [
-    "src",
-    "custom.d.ts"
-, "pages/index.js"  ],
+    "pages/**/*",
+    "components/**/*",
+  ],
   "exclude": [
     "node_modules"
   ],
