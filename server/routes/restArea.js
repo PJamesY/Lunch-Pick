@@ -14,7 +14,7 @@ const REST_AREA_LIST_LOC =
 
 const getRestAreaList = async () => {
   try {
-    response = await axios.get(
+    const response = await axios.get(
       `${REST_AREA_LIST_URL}?${encodeURIComponent("key")}=${
         process.env.REST_AREA_LIST_API_KEY
       }&${encodeURIComponent("type")}=json`
@@ -22,6 +22,7 @@ const getRestAreaList = async () => {
     return response.data;
   } catch (e) {
     // error
+    console.log("eeee", e);
   }
 };
 
@@ -112,7 +113,6 @@ router.get("/food", (req, res) => {
 router.get("/restAreaList", (req, res) => {
   getRestAreaList().then((response) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    console.log(response.list);
     res.send({ data: response.list });
   });
 });
