@@ -197,6 +197,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  console.log('params', params);
   const postData = await getRestAreaFood(params.id);
   const restArea = await getRestArea(params.id);
 

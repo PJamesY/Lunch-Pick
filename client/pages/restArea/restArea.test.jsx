@@ -3,7 +3,7 @@ import RestArea from '.';
 import { render } from '@testing-library/react';
 import { IRestAreaList } from '../../types/restArea';
 
-const restAreaList: IRestAreaList[] = [
+const restAreaList = [
   {
     routeCode: 'string',
     routeName: 'string',
