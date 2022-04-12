@@ -26,4 +26,19 @@ export class RestAreaService {
       console.log('eeee', e);
     }
   }
+
+  async getRestArea(code): Promise<any> {
+    try {
+      const response = await axios.get(
+        `${REST_AREA_LIST_URL}?${encodeURIComponent('key')}=${
+          process.env.REST_AREA_RECOMMEND_FOOD_KEY
+        }&${encodeURIComponent('type')}=json&svarCd=${code}`,
+      );
+      console.log('res', response);
+      return response.data;
+    } catch (e) {
+      // error
+      console.log('eeee', e);
+    }
+  }
 }
