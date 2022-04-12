@@ -7,16 +7,16 @@ export class RestAreaController {
 
   @Get()
   restArea(@Query('id') id: string) {
-    // console.log('sdfafsdf');
     return this.restAreaService.getRestArea(id);
   }
-
-  //   search(@Query('year') searchingYear: number) {
-  //     return `We are Searching made after: ${searchingYear}`;
-  //   }
 
   @Get('list')
   async getRestAreaList() {
     return this.restAreaService.getRestAreaList();
+  }
+
+  @Get('food')
+  food(@Query('id') id: string) {
+    return this.restAreaService.getFood(id);
   }
 }

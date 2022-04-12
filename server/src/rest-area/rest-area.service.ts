@@ -35,10 +35,25 @@ export class RestAreaService {
         }&${encodeURIComponent('type')}=json&svarCd=${code}`,
       );
       console.log('res', response);
-      return response.data;
+      return response.data.list[0];
     } catch (e) {
       // error
       console.log('eeee', e);
+    }
+  }
+
+  async getFood(code): Promise<any> {
+    try {
+      const response = await axios.get(
+        `${BEST_FOOD_API_URL}?${encodeURIComponent('key')}=${
+          process.env.REST_AREA_RECOMMEND_FOOD_KEY
+        }&${encodeURIComponent('type')}=json&${encodeURIComponent(
+          'stdRestCd',
+        )}=${code}`,
+      );
+      return response.data.list;
+    } catch (e) {
+      // error
     }
   }
 }
