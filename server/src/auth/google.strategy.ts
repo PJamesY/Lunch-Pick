@@ -13,8 +13,14 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: 'http://localhost:5000/google/redirect',
       scope: ['email', 'profile'],
+      accessType: 'offline',
+      prompt: 'consent',
     });
   }
+
+  // async authenticate(req) {
+  //   console.log('123123123', req);
+  // }
 
   async validate(
     accessToken: string,
@@ -23,7 +29,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     done: VerifyCallback,
   ): Promise<any> {
     const { name, emails, photos } = profile;
-    console.log('refresh', refreshToken);
+    console.log('refresh', refreshToken, accessToken);
     const user = {
       email: emails[0].value,
       firstName: name.givenName,
