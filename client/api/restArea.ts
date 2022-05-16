@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IRestAreaList } from '../types/restArea';
 
-async function getRestArea(code) {
+async function getRestArea(code: string) {
   const response = await axios.get('http://localhost:5000/api/restArea', { params: { id: code } });
   console.log('res', response.data.data);
   const restArea = {
@@ -11,16 +11,6 @@ async function getRestArea(code) {
     restAreaCode: response.data.data.svarCd,
     directionCode: response.data.data.gudClssCd,
   };
-
-  //   const restArea = restArea.data.data;
-
-  //   const filteredData: IRestAreaList = restAreaListWithoutGasStation.map((elem) => ({
-  //     routeCode: elem.routeCd,
-  //     routeName: elem.routeNm,
-  //     restAreaName: elem.svarNm,
-  //     restAreaCode: elem.svarCd,
-  //     directionCode: elem.gudClssCd,
-  //   }));
 
   return restArea;
 }
