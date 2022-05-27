@@ -189,14 +189,7 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
   );
 };
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   console.log('params', params);
   const postData = await getRestAreaFood(params.id);
   const restArea = await getRestArea(params.id);
