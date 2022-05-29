@@ -4,7 +4,7 @@ import { IFood } from '../types/food';
 dotenv.config();
 
 async function getRestAreaFood(code: string) {
-  const foodList = await axios.get('http://localhost:5000/rest-area/food', { params: { id: code } });
+  const foodList = await axios.get(`${process.env.API_BACKEND}/rest-area/food`, { params: { id: code } });
   if (foodList.data.length !== 0) {
     const filteredFoodList = foodList.data.map((food: IFood) => ({
       foodName: food.foodNm,
@@ -12,9 +12,7 @@ async function getRestAreaFood(code: string) {
       isBest: food.bestfoodyn,
       isPremium: food.premiumyn,
       price: food.foodCost,
-      //   material: food.foodMaterial?.split('').map((mat) => mat.trim()),
     }));
-
     return filteredFoodList;
   }
 
