@@ -103,7 +103,6 @@ const getRestAreaLoc = async () => {
 };
 
 router.get("/food", (req, res) => {
-  console.log("req", req.query.id);
   getAreaRestFood(req.query.id).then((response) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.send({ data: response.data.list });

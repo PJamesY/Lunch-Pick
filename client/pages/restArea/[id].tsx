@@ -190,7 +190,6 @@ const Food: React.FC<FoodProps> = ({ restAreaName, foodList }) => {
 };
 
 export async function getServerSideProps({ params }) {
-  console.log('params', params);
   const postData = await getRestAreaFood(params.id);
   const restArea = await getRestArea(params.id);
 

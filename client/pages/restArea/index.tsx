@@ -1,10 +1,10 @@
 import React from 'react';
 import getRestAreaList from '../../api/restAreaList';
-import { IRestAreaList } from '../../types/restArea';
+import { IExtractedRestArea } from '../../types/restArea';
 import Link from 'next/link';
 
 export interface RestAreaProps {
-  restAreaList: IRestAreaList[];
+  restAreaList: IExtractedRestArea[];
 }
 
 function RestArea({ restAreaList }: RestAreaProps) {
@@ -12,11 +12,7 @@ function RestArea({ restAreaList }: RestAreaProps) {
     <>
       <ul>
         {restAreaList.map((restArea, idx) => (
-          // if ()
           <li key={restArea.restAreaCode}>
-            {/* <Link href="/foods/[id]" as={`/foods/${restArea.restAreaCode}`}>
-            <a>{restArea.restAreaName}</a>
-          </Link> */}
             <Link href={`/restArea/${encodeURIComponent(restArea.restAreaCode)}`}>
               <a>{restArea.restAreaName}</a>
             </Link>

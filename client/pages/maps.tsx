@@ -9,7 +9,6 @@ const aroundRestArea: React.FC<aroundRestAreaProps> = ({ children }) => {
 
   const [map, setMap] = useState(null);
   const displayCircle = (map, center, radius) => {
-    console.log(map);
     const circle = new (window as any).daum.maps.Circle({ center: center, radius });
     circle.setMap(map);
   };

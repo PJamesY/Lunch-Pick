@@ -7,7 +7,6 @@ export interface aroundRestAreaListProps {
 }
 
 const AroundRestAreaList: React.FC<aroundRestAreaListProps> = ({ router: { query } }) => {
-  console.log('router', query);
   const [list, setList] = useState([]);
 
   useEffect(() => {

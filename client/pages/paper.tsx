@@ -41,7 +41,6 @@ const Flower = function Flower({ left, isDay }: ObjectProps) {
             <div
               className="heart"
               onClick={() => {
-                console.log('12312');
                 setShowOption(!showOption);
               }}
             >
