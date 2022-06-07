@@ -1,4 +1,6 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import dotenv from 'dotenv';
+dotenv.config();
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -7,7 +9,7 @@ class MyDocument extends Document {
   }
 
   render() {
-    const kakaoKey = '925bfb9224e7c303bef7fc0a72012232';
+    const kakaoKey = `${process.env.KAKAO_KEY}`;
     return (
       <Html>
         <Head>
