@@ -1,10 +1,9 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { IRestAreaList } from '../types/restArea';
 dotenv.config();
 
 async function getRestArea(code: string) {
-  const response = await axios.get('http://localhost:5000/rest-area', { params: { id: code } });
+  const response = await axios.get(`${process.env.API_BACKEND}/rest-area`, { params: { id: code } });
   const restArea = {
     routeCode: response.data.routeCd,
     routeName: response.data.routeNm,
