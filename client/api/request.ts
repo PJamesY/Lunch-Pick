@@ -1,16 +1,21 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
-class Service {
+class AXIOS {
   service: any;
   constructor() {
     let service = axios.create();
     service.interceptors.response.use(this.handleSuccess);
+    service.defaults.baseURL = process.env.API_BACKEND;
     this.service = service;
   }
 
-  handleSuccess(response) {
+  handleSuccess(response: AxiosResponse) {
     return response;
+  }
+
+  get(path: string, params?: any) {
+    return this.service.get(path, { params });
   }
 }
 
-export default new Service();
+export default new AXIOS();
