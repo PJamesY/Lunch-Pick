@@ -1,5 +1,5 @@
 import React from 'react';
-import getRestAreaList from '../../api/restAreaList';
+import RestAreaApi from '../../api/restArea';
 import { IExtractedRestArea } from '../../types/restArea';
 import Link from 'next/link';
 
@@ -42,7 +42,7 @@ function RestArea({ restAreaList }: RestAreaProps) {
 }
 
 export async function getStaticProps() {
-  const restAreaList = await getRestAreaList();
+  const restAreaList = await RestAreaApi.getList();
   return {
     props: {
       restAreaList: restAreaList,

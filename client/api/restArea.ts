@@ -1,20 +1,10 @@
 import axios from 'axios';
-import dotenv from 'dotenv';
 import { Axios } from './request';
-dotenv.config();
-
-interface IRestArea {
-  routeCode: string;
-  routeName: string;
-  restAreaName: string;
-  restAreaCode: string;
-  directionCode: string;
-}
+import { IExtractedRestArea, IRestArea } from '../types/restArea';
 
 class RestArea extends Axios {
-  async get(code: string): Promise<IRestArea> {
+  async get(code: string): Promise<IExtractedRestArea> {
     const response = await this.service.get('/rest-area', { params: { id: code } });
-    console.log(response);
     const restArea = {
       routeCode: response.routeCd,
       routeName: response.routeNm,
@@ -24,6 +14,20 @@ class RestArea extends Axios {
     };
 
     return restArea;
+  }
+
+  async getList(): Promise<IExtractedRestArea[]> {
+    const response = await this.service.get('/rest-area/list');
+    const onlyRestArea = response.list
+      .filter((elem: IRestArea) => elem.svarNm.slice(-3) === '휴게소')
+      .map((elem: IRestArea) => ({
+        routeCode: elem.routeCd,
+        routeName: elem.routeNm,
+        restAreaName: elem.svarNm,
+        restAreaCode: elem.svarCd,
+        directionCode: elem.gudClssCd,
+      }));
+    return onlyRestArea;
   }
 }
 
