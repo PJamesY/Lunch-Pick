@@ -1,18 +1,30 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { Axios } from './request';
 dotenv.config();
 
-async function getRestArea(code: string) {
-  const response = await axios.get(`${process.env.API_BACKEND}/rest-area`, { params: { id: code } });
-  const restArea = {
-    routeCode: response.data.routeCd,
-    routeName: response.data.routeNm,
-    restAreaName: response.data.svarNm,
-    restAreaCode: response.data.svarCd,
-    directionCode: response.data.gudClssCd,
-  };
-
-  return restArea;
+interface IRestArea {
+  routeCode: string;
+  routeName: string;
+  restAreaName: string;
+  restAreaCode: string;
+  directionCode: string;
 }
 
-export default getRestArea;
+class RestArea extends Axios {
+  async get(code: string): Promise<IRestArea> {
+    const response = await this.service.get('/rest-area', { params: { id: code } });
+    console.log(response);
+    const restArea = {
+      routeCode: response.routeCd,
+      routeName: response.routeNm,
+      restAreaName: response.svarNm,
+      restAreaCode: response.svarCd,
+      directionCode: response.gudClssCd,
+    };
+
+    return restArea;
+  }
+}
+
+export default new RestArea();
