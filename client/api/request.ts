@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-class AXIOS {
+export class Axios {
   service: any;
   constructor() {
     let service = axios.create();
@@ -10,7 +10,7 @@ class AXIOS {
   }
 
   handleSuccess(response: AxiosResponse) {
-    return response;
+    return response.data;
   }
 
   get(path: string, params?: any) {
@@ -18,4 +18,4 @@ class AXIOS {
   }
 }
 
-export default new AXIOS();
+export default new Axios();
