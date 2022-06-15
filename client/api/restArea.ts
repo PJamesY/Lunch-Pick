@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Axios } from './request';
-import { IExtractedRestArea, IRestArea } from '../types/restArea';
+import { IExtractedRestArea, IRestArea, IExtractedFood, IFood } from '../types/restArea';
 
 class RestArea extends Axios {
   async get(code: string): Promise<IExtractedRestArea> {
@@ -28,6 +28,21 @@ class RestArea extends Axios {
         directionCode: elem.gudClssCd,
       }));
     return onlyRestArea;
+  }
+
+  async getFood(code: string): Promise<IExtractedFood[] | []> {
+    const foodList = await this.service.get('/rest-area/food', { params: { id: code } });
+    if (foodList.length !== 0) {
+      const filteredFoodList = foodList.map((food: IFood) => ({
+        foodName: food.foodNm,
+        isRecommend: food.recommendyn,
+        isBest: food.bestfoodyn,
+        isPremium: food.premiumyn,
+        price: food.foodCost,
+      }));
+      return filteredFoodList;
+    }
+    return [];
   }
 }
 
