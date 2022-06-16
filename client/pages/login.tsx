@@ -15,7 +15,7 @@ const Login = function Login() {
   // }, []);
 
   const google = () => {
-    window.open('http://localhost:5000/auth/google', '_self');
+    window.open('http://localhost:5000/google', '_self');
   };
 
   const facebook = () => {
