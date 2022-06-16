@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import RestArea from '../../api/restArea';
-import getRestAreaFood from '../../api/restAreaFood';
 import FoodCard from '../../components/fodCard';
 import useSWR from 'swr';
 import axios from 'axios';
@@ -196,7 +195,7 @@ interface IParams {
 }
 
 export async function getServerSideProps({ params }: IParams) {
-  const postData = await getRestAreaFood(params.id);
+  const postData = await RestArea.getFood(params.id);
   const restArea = await RestArea.get(params.id);
 
   return {
