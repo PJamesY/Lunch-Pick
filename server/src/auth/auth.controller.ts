@@ -1,9 +1,9 @@
-import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Redirect, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { GoogleAuthGuard } from './guards';
 
-@Controller('google')
+@Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
